@@ -1,8 +1,8 @@
 #! /usr/bin/env python3 
-raw = [int(n) for n in [x.split(",") for x in open("input.txt","r")][0]]
+fishes = [int(i) for i in open("example.txt","r").readline().split(',')] 
 def age(days):
 	fish_ages = 10*[0]
-	for f in raw:
+	for f in fishes:
 		fish_ages[f] += 1
 	for d in range(days):
 		for i in range(len(fish_ages)):
