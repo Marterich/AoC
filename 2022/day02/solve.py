@@ -15,7 +15,7 @@ def part1(data):
 		elif ((player1 == "C" and player2 == "X") or (player1 == "A" and player2 == "Y") or (player1 == "B" and player2 == "Z")):
 			return (score[player1] + score["lost"], score[player2] + score["win"])
 		# Draw
-		elif (score[player1] == score[player2]):
+		else:
 			return (score[player1] + score["draw"], score[player2] + score["draw"])
 	
 	final_score = [0,0]
