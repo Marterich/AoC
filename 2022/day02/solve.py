@@ -4,30 +4,15 @@ example_data = [line.strip().split(" ") for line in open("example.txt","r")]
 input_data = [line.strip().split(" ") for line in open("input.txt","r")]
 
 #(A,X = Rock), (B,Y = Paper), (C,Z = Scissor)
-
 score  ={"A":1, "B":2, "C":3, "X":1, "Y":2, "Z":3, "lost":0, "draw":3, "win":6}
 
 def part1(data):
 	def evaluate_round (player1, player2):
-		# Player 1 Rock beats Scissor
-		if (player1 == "A" and player2 == "Z"):
-			# Calculate Score
+		# Player 1: Rock beats Scissor or Paper beats Rock or Scissor beats Paper
+		if ((player1 == "A" and player2 == "Z") or (player1 == "B" and player2 == "X") or (player1 == "C" and player2 == "Y")):
 			return (score[player1] + score["win"], score[player2] + score["lost"])
-		# Player 1 Paper beats Rock
-		elif player1 == "B" and player2 == "X":
-			return (score[player1] + score["win"], score[player2] + score["lost"])
-		# Player 1 Scissor beats Paper
-		elif player1 == "C" and player2 == "Y":
-			return (score[player1] + score["win"], score[player2] + score["lost"])
-		# Player 2 Rock beats Scissor
-		elif (player1 == "C" and player2 == "X"):
-			# Calculate Score
-			return (score[player1] + score["lost"], score[player2] + score["win"])
-		# Player 2 Paper beats Rock
-		elif player1 == "A" and player2 == "Y":
-			return (score[player1] + score["lost"], score[player2] + score["win"])
-		# Player 2 Scissor beats Paper
-		elif player1 == "B" and player2 == "Z":
+		# Player 2: Rock beats Scissor or Paper beats Rock or Scissor beats Paper
+		elif ((player1 == "C" and player2 == "X") or (player1 == "A" and player2 == "Y") or (player1 == "B" and player2 == "Z")):
 			return (score[player1] + score["lost"], score[player2] + score["win"])
 		# Draw
 		elif (score[player1] == score[player2]):
